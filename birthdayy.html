@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Olabisi ❤️</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #3294e4, #ededed);
+      font-family: Arial, sans-serif;
+      text-align: center;
+      color: white;
+    }
+
+    .container {
+      margin-top: 80px;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      background: white;
+      color: #ff4d6d;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 20px;
+      display: none;
+    }
+
+    #countdown {
+      font-size: 22px;
+      margin-top: 20px;
+    }
+
+    .heart {
+      position: fixed;
+      color: red;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh);
+      }
+
+      to {
+        transform: translateY(-10vh);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Happy Birthday Olabisi ❤️</h1>
+    <p id="countdown"></p>
+
+    <p>You ready for your surprise? 👀</p>
+    <button onclick="showMessage()">Click me 🎁</button>
+
+    <div id="message">
+      <p>Olabisi... ❤️</p>
+      <p>You’re not just a year older, you’re a year more beautiful 😌</p>
+      <p>You are so pretty and unique </p>
+      <p>I hope today brings you happiness, laughter, and small small me 😏</p>
+      <p>Enjoy your day, I pray God grants you all your hert desires ❤️🎉</p>
+    </div>
+  </div>
+
+  <!-- 🎵 MUSIC (replace link with any mp3 you like) -->
+  <audio id="music" loop>
+    <source src="olabisi-song.mp3.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // 🎁 SHOW MESSAGE + PLAY MUSIC
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+      document.getElementById("music").play();
+
+      for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+      }
+    }
+
+    // ⏳ COUNTDOWN TIMER (SET HER BIRTHDAY DATE HERE)
+    let birthday = new Date("April 7, 2026 00:00:00").getTime();
+
+    let timer = setInterval(function () {
+      let now = new Date().getTime();
+      let distance = birthday - now;
+
+      let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      let hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      let minutes = Math.floor((distance / (1000 * 60)) % 60);
+      let seconds = Math.floor((distance / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        "⏳ " + days + "d " + hours + "h " + minutes + "m " + seconds + "s left";
+
+      if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("countdown").innerHTML = "🎉 IT'S HER DAY!!! 🎉";
+      }
+    }, 1000);
+  </script>
+
+</body>
+
+</html>
